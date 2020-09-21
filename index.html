@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head><meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="style.css">
+  <script type="text/javascript">
+    window.onload = () => {
+      // 「開始」ボタンをクリック
+      document.getElementById('button-start').addEventListener('click', async () => {
+        const result = await window.api.TimerStart("ipc-timer-start");
+        if (result === true) {
+          document.getElementById('button-reset').textContent = "停止";
+        }
+        else {
+          document.getElementById('button-reset').textContent = "リセット";
+        }
+      });
+      // 「リセット」or「停止」ボタンをクリック
+      document.getElementById('button-reset').addEventListener('click', async () => {
+        if ( document.getElementById('button-reset').textContent === "停止" ) {
+          document.getElementById('button-reset').textContent = "リセット";
+          window.api.TimerStop("ipc-timer-stop");
+        }
+        else {
+          window.api.TimerReset("ipc-timer-reset");
+        }
+      });
+    }
+    // タイマー（ミリ秒）の受け取り
+    window.api.DisplayTimer("ipc-display-timer", (milliseconds) => {
+      // console.log("ipc-display-timer: " + arg);
+      if (milliseconds < 900){
+        document.getElementById('button-reset').textContent = "リセット";
+        return;
+      }
+      let min = parseInt((milliseconds / 1000) / 60);
+      let sec = parseInt(milliseconds / 1000) % 60;
+      document.getElementById('timer-number').textContent =
+          ('00' + min).slice(-2) + ':' + ('00' + sec).slice(-2);
+    });
+
+  </script>
+</head>
+<body>
+
+<div>
+  <div id="timer-number">3:00</div>
+</div>
+
+<div class="button-wrapper">
+  <button id="button-start" class="button button-color-blue">開始</button>
+  <button id="button-reset" class="button button-color-red">リセット</button>
+</div>
+
+</body>
+</html>

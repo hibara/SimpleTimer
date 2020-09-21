@@ -1,0 +1,48 @@
+############
+## Electron
+############
+
+bower_components/
+node_modules/
+dist/
+
+# electron-packager
+release-builds/
+
+#files
+*.tgz
+*.log
+
+############
+## Windows
+############
+
+# Windows image file caches
+Thumbs.db
+
+# Folder config file
+Desktop.ini
+
+############
+## MacOS
+############
+
+# PhpStorm
+.idea/*
+
+# Mac crap
+.DS_Store
+
+# Repository Avater for SourceTree
+icon.png
+
+# Mac Folder
+Mac/*
+
+############
+## Others
+############
+
+# private temporary directory and files
+_*/
+_*

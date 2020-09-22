@@ -30,6 +30,9 @@ Desktop.ini
 # PhpStorm
 .idea/*
 
+# Visual Studio Code
+.vscode/*
+
 # Mac crap
 .DS_Store
 

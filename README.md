@@ -8,8 +8,8 @@
 
 このアプリケーションをサンプルとして、以下の記事を書きました。
 
-Electron（v10.1.2９現在）のIPC通信入門 - よりセキュアな方法への変遷
-[https://qiita.com/hibara](https://qiita.com/hibara)
+Electron（v10.1.2９現在）のIPC通信入門 - よりセキュアな方法への変遷  
+<https://qiita.com/hibara/items/c59fb6924610fc22a9db>
 
 ## サンプルアプリケーション
 

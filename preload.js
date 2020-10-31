@@ -11,7 +11,7 @@ contextBridge.exposeInMainWorld(
 
     TimerReset: () => ipcRenderer.send("ipc-timer-reset"),
 
-    DisplayTimer: (channel, listener) => {
+    DisplayTimer: (listener) => {
       ipcRenderer.on("ipc-display-timer", (event, arg) => listener(arg));
     }
 

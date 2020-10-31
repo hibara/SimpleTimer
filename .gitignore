@@ -23,6 +23,9 @@ Thumbs.db
 # Folder config file
 Desktop.ini
 
+# Environmental construction
+win-env.bat
+
 ############
 ## MacOS
 ############
@@ -41,6 +44,9 @@ icon.png
 
 # Mac Folder
 Mac/*
+
+# Environmental construction
+mac-env.command
 
 ############
 ## Others

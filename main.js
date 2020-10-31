@@ -99,13 +99,13 @@ const createMainMenu = () => {
         {
           label: 'GitHub Repository',
           click: async () => {
-            await shell.openExternal('https://github.com/hibara/Erectron-Dark-Mode-Test')
+            await shell.openExternal('https://github.com/hibara/SimpleTimer')
           }
         },
         {
           label: "Qiitaの記事",
           click: async () => {
-            await shell.openExternal('https://qiita.com/hibara')
+            await shell.openExternal('https://qiita.com/hibara/items/c59fb6924610fc22a9db')
           }
         },
         {
@@ -144,12 +144,15 @@ const createTrayIcon = () => {
 const displayTimer = (valMilliSeconds) => {
   mainWindow.webContents.send("ipc-display-timer", valMilliSeconds);
   // タスクトレイのアイコン表示
-  let percent = Math.floor((valMilliSeconds / MAX_MILLI_SECONDS) * 100);
+  const percent = valMilliSeconds / MAX_MILLI_SECONDS;
+  const percent100 = Math.floor(percent * 100);
   // 5の倍数で丸める
-  let multipleOfFive =  Math.round(percent / 5) * 5;
+  let multipleOfFive =  Math.round(percent100 / 5) * 5;
 
   let imgFilePath;
+  // Windowsは「.ico」、macOSは「.png」形式
   let imgFileName = ('000' + multipleOfFive).slice(-3) + (process.platform === 'win32' ? '.ico' : '.png');
+  // Windows、あるいはダークテーマの場合は基本「白色」のアイコンテーマを使う
   if ( process.platform === 'win32' || isDarkTheme === true ) {
     imgFilePath = __dirname + '/images/tray-icon/white/' + imgFileName;
   }
@@ -157,8 +160,17 @@ const displayTimer = (valMilliSeconds) => {
     imgFilePath = __dirname + '/images/tray-icon/black/' + imgFileName;
   }
 
+  // プログレスバー
+  if (isWorking === false && valMilliSeconds === MAX_MILLI_SECONDS) {
+    mainWindow.setProgressBar(-1);
+  }
+  else {
+    mainWindow.setProgressBar(percent);
+  }
+
+  // Tray アイコンの差し替え
   tray.setImage(nativeImage.createFromPath(imgFilePath));
-  tray.setToolTip(percent + "% - " + app.name);
+  tray.setToolTip(percent100 + "% - " + app.name);
 };
 // タイマー開始
 const StartTimer = () => {
@@ -167,6 +179,10 @@ const StartTimer = () => {
     displayTimer(milliseconds);
     if ( milliseconds <= 0) {
       StopTimer();
+      // macOS の場合のみ、タイマー終了時にアイコンがバウンスします
+      if ( process.platform === 'darwin' ) {
+        app.dock.bounce();
+      }
     }
   }, 100);
 }
@@ -178,6 +194,7 @@ const StopTimer = () => {
 // タイマーリセット
 const ResetTimer = () => {
   milliseconds = MAX_MILLI_SECONDS;
+  mainWindow.setProgressBar(-1);
   displayTimer(milliseconds);
 }
 // システムカラーの変更イベント

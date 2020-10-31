@@ -7,7 +7,7 @@
     window.onload = () => {
       // 「開始」ボタンをクリック
       document.getElementById('button-start').addEventListener('click', async () => {
-        const result = await window.api.TimerStart("ipc-timer-start");
+        const result = await window.api.TimerStart(); // contextBridge
         if (result === true) {
           document.getElementById('button-reset').textContent = "停止";
         }
@@ -19,15 +19,15 @@
       document.getElementById('button-reset').addEventListener('click', async () => {
         if ( document.getElementById('button-reset').textContent === "停止" ) {
           document.getElementById('button-reset').textContent = "リセット";
-          window.api.TimerStop("ipc-timer-stop");
+          window.api.TimerStop(); // contextBridge
         }
         else {
-          window.api.TimerReset("ipc-timer-reset");
+          window.api.TimerReset();  // contextBridge
         }
       });
     }
     // タイマー（ミリ秒）の受け取り
-    window.api.DisplayTimer("ipc-display-timer", (milliseconds) => {
+    window.api.DisplayTimer((milliseconds) => { // contextBridge
       // console.log("ipc-display-timer: " + arg);
       if (milliseconds < 900){
         document.getElementById('button-reset').textContent = "リセット";

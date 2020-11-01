@@ -4,8 +4,8 @@ const {app, Menu, BrowserWindow, ipcMain, Tray, nativeTheme} = require('electron
 const path = require('path');
 const nativeImage = require('electron').nativeImage
 
+// 計る「3」分間
 const MAX_MILLI_SECONDS = 3*60*1000;
-// const MAX_MILLI_SECONDS = 10*1000;  // デバッグ
 let milliseconds = MAX_MILLI_SECONDS;
 // トレイアイコン
 let tray = null;
@@ -26,10 +26,13 @@ const createWindow = () => {
     minWidth: 1024,
     minHeight: 640,
     webPreferences: {
-      worldSafeExecuteJavaScript: true, // In Electron 12, the default will be changed to true.
-      nodeIntegration: true, // XSS対策としてnodeモジュールをレンダラープロセスで使えなくする
-      nodeIntegrationInWorker: true,
-      contextIsolation: true, // レンダラープロセスに公開するAPIのファイル
+      // In Electron 12, the default will be changed to true.
+      worldSafeExecuteJavaScript: true,
+      // XSS対策としてnodeモジュールをレンダラープロセスで使えなくする
+      nodeIntegration: false,
+      // レンダラープロセスに公開するAPIのファイル
+      //（Electron 11 から、デフォルト：falseが非推奨となった）
+      contextIsolation: true,
       preload: path.resolve(`${__dirname}/preload.js`)
     },
     // icon: iconPath
@@ -212,7 +215,6 @@ app.on('ready', () => {
 });
 app.on('window-all-closed', () => {
   StopTimer();
-  clearInterval(idTimer);
   if (process.platform !== 'darwin') {  // macOS以外
     app.quit();
   }
@@ -243,5 +245,3 @@ ipcMain.on("ipc-timer-stop", () => {
 ipcMain.on("ipc-timer-reset", () => {
   ResetTimer();
 });
-
-

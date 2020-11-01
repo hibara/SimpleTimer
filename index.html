@@ -5,6 +5,8 @@
   <link rel="stylesheet" href="style.css">
   <script type="text/javascript">
     window.onload = () => {
+      // 表示の初期化
+      window.api.TimerReset();  // contextBridge
       // 「開始」ボタンをクリック
       document.getElementById('button-start').addEventListener('click', async () => {
         const result = await window.api.TimerStart(); // contextBridge
@@ -29,22 +31,20 @@
     // タイマー（ミリ秒）の受け取り
     window.api.DisplayTimer((milliseconds) => { // contextBridge
       // console.log("ipc-display-timer: " + arg);
-      if (milliseconds < 900){
+      if (milliseconds <= 0){
         document.getElementById('button-reset').textContent = "リセット";
-        return;
       }
       let min = parseInt((milliseconds / 1000) / 60);
       let sec = parseInt(milliseconds / 1000) % 60;
       document.getElementById('timer-number').textContent =
           ('00' + min).slice(-2) + ':' + ('00' + sec).slice(-2);
     });
-
   </script>
 </head>
 <body>
 
 <div>
-  <div id="timer-number">3:00</div>
+  <div id="timer-number"><!-- 3:00 --></div>
 </div>
 
 <div class="button-wrapper">

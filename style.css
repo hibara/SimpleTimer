@@ -1,6 +1,8 @@
 @font-face {
-  font-family: 'JosefinSans-Regular';
-  src: url(font/JosefinSans/JosefinSans-Regular.ttf) format('truetype');
+  font-family: 'BPmono';
+  src: url(font/BPmono/BPmono.ttf) format('truetype');
+  /*font-family: 'JosefinSans-Regular';*/
+  /*src: url(font/JosefinSans/JosefinSans-Regular.ttf) format('truetype');*/
 }
 html {
   width: 100%;
@@ -11,7 +13,7 @@ html {
   font-family: 游ゴシック体, 'Yu Gothic', YuGothic, 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
 }
 #timer-number {
-  font-family: 'JosefinSans-Regular', serif;
+  font-family: 'BPmono', monospace;
   font-size: 32px;
   height: 2em;
   display: flex;

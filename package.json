@@ -6,10 +6,10 @@
   "description": "ipc通信の入門用サンプル簡易タイマーアプリです。",
   "main": "main.js",
   "scripts": {
-    "start": "node_modules/.bin/electron .",
+    "start": "node_modules\\.bin\\electron .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "package-mac": "node_modules/.bin/electron-packager . --asar --overwrite --platform=darwin --arch=x64 --icon=images/main-icon/main.icns --prune=true --out=release-builds --darwinDarkModeSupport=true --extraResources=images",
-    "package-win": "node_modules/.bin/electron-packager . --asar --overwrite --platform=win32 --arch=ia32 --icon=images\\main-icon\\main.ico --prune=true --out=release-builds --extraResources=images"
+    "package-mac": "node_modules\\.bin\\electron-packager . --asar --overwrite --platform=darwin --arch=x64 --icon=images/main-icon/main.icns --prune=true --out=release-builds --darwinDarkModeSupport=true --extraResources=images",
+    "package-win": "node_modules\\.bin\\electron-packager . --asar --overwrite --platform=win32 --arch=ia32 --icon=images\\main-icon\\main.ico --prune=true --out=release-builds --extraResources=images"
   },
   "keywords": [],
   "author": "Mitsuhiro Hibara",

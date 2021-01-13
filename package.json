@@ -1,8 +1,8 @@
 {
   "name": "SimpleTimer",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "productName": "SimpleTimer",
-  "copyright": "©2020 M.Hibara, All rights reserved.",
+  "copyright": "©2021 M.Hibara",
   "description": "ipc通信の入門用サンプル簡易タイマーアプリです。",
   "main": "main.js",
   "scripts": {
@@ -15,7 +15,7 @@
   "author": "Mitsuhiro Hibara",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^11.0.3",
-    "electron-packager": "^15.1.0"
+    "electron": "^11.2.0",
+    "electron-packager": "^15.2.0"
   }
 }

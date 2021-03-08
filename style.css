@@ -58,4 +58,17 @@ html {
   outline: none;
   box-shadow: 0 0 0 4px #cbd6ee;
 }
+@media (prefers-color-scheme: dark) {
+  html {
+    background:  #333333;
+    color: white; }
+}
+
+@media (prefers-color-scheme: light) {
+  html {
+    background:  #dce7eb;
+    color: black;
+  }
+}
+
 

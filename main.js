@@ -125,6 +125,7 @@ const createMainMenu = () => {
 }
 // トレイアイコンを生成する
 const createTrayIcon = () => {
+  tray = null;
   let imgFilePath;
   if (process.platform === 'win32') {
     imgFilePath = __dirname + '/images/tray-icon/white/100.ico';
@@ -201,11 +202,11 @@ const ResetTimer = () => {
   displayTimer(milliseconds);
 }
 // システムカラーの変更イベント
-if ( process.platform === 'darwin' ) { 
-  nativeTheme.on("updated", () => {
-    isDarkTheme = nativeTheme.shouldUseDarkColors === true;
-  });
-}
+nativeTheme.on("updated", () => {
+  isDarkTheme = nativeTheme.shouldUseDarkColors === true;
+  console.log(nativeTheme);
+  displayTimer(milliseconds);
+});
 
 app.on('ready', () => {
   // create window

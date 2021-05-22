@@ -16,10 +16,10 @@ Electron（v12.0.0 現在）のIPC通信入門 - よりセキュアな方法へ�
 [リリースページ](https://github.com/hibara/SimpleTimer/releases)
 
 macOS  
-<https://github.com/hibara/SimpleTimer/releases/download/v1.0.4/SimpleTimer-darwin-x64.zip>
+<https://github.com/hibara/SimpleTimer/releases/download/v1.0.5/SimpleTimer-darwin-x64.zip>
 
 Windows  
-<https://github.com/hibara/SimpleTimer/releases/download/v1.0.4/SimpleTimer-win32-ia32.zip>
+<https://github.com/hibara/SimpleTimer/releases/download/v1.0.5/SimpleTimer-win32-ia32.zip>
 
 ## ライセンス
 

@@ -8,7 +8,7 @@
 
 このアプリケーションをサンプルとして、以下の記事を書きました。
 
-Electron（v12.0.0 現在）のIPC通信入門 - よりセキュアな方法への変遷  
+Electron（v13.1.4 現在）のIPC通信入門 - よりセキュアな方法への変遷  
 <https://qiita.com/hibara/items/c59fb6924610fc22a9db>
 
 ## サンプルアプリケーション
@@ -16,10 +16,10 @@ Electron（v12.0.0 現在）のIPC通信入門 - よりセキュアな方法へ�
 [リリースページ](https://github.com/hibara/SimpleTimer/releases)
 
 macOS  
-<https://github.com/hibara/SimpleTimer/releases/download/v1.0.5/SimpleTimer-darwin-x64.zip>
+<https://github.com/hibara/SimpleTimer/releases/download/v1.0.6/SimpleTimer-darwin-x64.zip>
 
 Windows  
-<https://github.com/hibara/SimpleTimer/releases/download/v1.0.5/SimpleTimer-win32-ia32.zip>
+<https://github.com/hibara/SimpleTimer/releases/download/v1.0.6/SimpleTimer-win32-ia32.zip>
 
 ## ライセンス
 

@@ -1,8 +1,7 @@
 'use strict';
 
-const {app, Menu, BrowserWindow, ipcMain, Tray, nativeTheme} = require('electron');
+const {app, Menu, BrowserWindow, ipcMain, Tray, nativeTheme, nativeImage} = require('electron');
 const path = require('path');
-const nativeImage = require('electron').nativeImage
 
 // 計る「3」分間
 const MAX_MILLI_SECONDS = 3*60*1000;
@@ -25,6 +24,7 @@ const createWindow = () => {
     height: 640,
     minWidth: 1024,
     minHeight: 640,
+    "window.autoDetectColorScheme": true,
     webPreferences: {
       // In Electron 12, the default will be changed to true.
       worldSafeExecuteJavaScript: true,
@@ -124,18 +124,28 @@ const createMainMenu = () => {
   Menu.setApplicationMenu(menu)
 }
 // トレイアイコンを生成する
-const createTrayIcon = () => {
+const createTrayIcon = async () => {
   tray = null;
   let imgFilePath;
   if (process.platform === 'win32') {
     imgFilePath = __dirname + '/images/tray-icon/white/100.ico';
   }
   else{
-    imgFilePath = __dirname + '/images/tray-icon/black/100.png';
-    if ( nativeTheme.shouldUseDarkColors === true ){
+    if (nativeTheme.shouldUseDarkColors === true){
+      console.log("Dark: true");
       isDarkTheme = true;
       imgFilePath = __dirname + '/images/tray-icon/white/100.png';
     }
+    else{
+      console.log("Dark: false");
+      imgFilePath = __dirname + '/images/tray-icon/black/100.png';
+    }
+
+    console.log(nativeTheme.themeSource);
+    console.log("HighContrastColors: " + nativeTheme.shouldUseHighContrastColors);
+
+    console.log("InvertedColorScheme: " + nativeTheme.shouldUseInvertedColorScheme);
+
   }
   const contextMenu = Menu.buildFromTemplate([
     { label: '終了', role: 'quit' }
@@ -201,13 +211,12 @@ const ResetTimer = () => {
   mainWindow.setProgressBar(-1);
   displayTimer(milliseconds);
 }
+
 // システムカラーの変更イベント
 nativeTheme.on("updated", () => {
   isDarkTheme = nativeTheme.shouldUseDarkColors === true;
-  console.log(nativeTheme);
   displayTimer(milliseconds);
 });
-
 app.on('ready', () => {
   // create window
   createWindow();

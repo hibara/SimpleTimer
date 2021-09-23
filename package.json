@@ -1,6 +1,6 @@
 {
   "name": "simpletimer",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "productName": "SimpleTimer",
   "copyright": "©2021 M.Hibara",
   "description": "ipc通信の入門用サンプル簡易タイマーアプリです。",
@@ -8,14 +8,14 @@
   "scripts": {
     "start": "node_modules/.bin/electron .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "package-mac": "node_modules/.bin/electron-packager . --asar --overwrite --platform=darwin --arch=x64 --icon=images/main-icon/main.icns --prune=true --out=release-builds --darwinDarkModeSupport=true --extraResources=images --electron-version=14.0.0",
-    "package-win": "node_modules\\.bin\\electron-packager . --asar --overwrite --platform=win32 --arch=ia32 --icon=images\\main-icon\\main.ico --prune=true --out=release-builds --extraResources=images --electron-version=14.0.0"
+    "package-mac": "node_modules/.bin/electron-packager . --asar --overwrite --platform=darwin --arch=x64 --icon=images/main-icon/main.icns --prune=true --out=release-builds --darwinDarkModeSupport=true --extraResources=images --electron-version=15.0.0",
+    "package-win": "node_modules\\.bin\\electron-packager . --asar --overwrite --platform=win32 --arch=ia32 --icon=images\\main-icon\\main.ico --prune=true --out=release-builds --extraResources=images --electron-version=15.0.0"
   },
   "keywords": [],
   "author": "Mitsuhiro Hibara",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^14.0.0",
+    "electron": "^15.0.0",
     "electron-packager": "^15.2.0",
     "request": "^2.88.2"
   }

@@ -127,26 +127,21 @@ const createMainMenu = () => {
 const createTrayIcon = async () => {
   tray = null;
   let imgFilePath;
-  if (process.platform === 'win32') {
-    imgFilePath = __dirname + '/images/tray-icon/white/100.ico';
+  if (nativeTheme.shouldUseDarkColors === true){
+    console.log("Dark: true");
+    isDarkTheme = true;
+    imgFilePath = __dirname + '/images/tray-icon/white/100.png';
   }
   else{
-    if (nativeTheme.shouldUseDarkColors === true){
-      console.log("Dark: true");
-      isDarkTheme = true;
-      imgFilePath = __dirname + '/images/tray-icon/white/100.png';
-    }
-    else{
-      console.log("Dark: false");
-      imgFilePath = __dirname + '/images/tray-icon/black/100.png';
-    }
-
-    console.log(nativeTheme.themeSource);
-    console.log("HighContrastColors: " + nativeTheme.shouldUseHighContrastColors);
-
-    console.log("InvertedColorScheme: " + nativeTheme.shouldUseInvertedColorScheme);
-
+    console.log("Dark: false");
+    imgFilePath = __dirname + '/images/tray-icon/black/100.png';
   }
+
+  console.log(nativeTheme.themeSource);
+  console.log("HighContrastColors: " + nativeTheme.shouldUseHighContrastColors);
+
+  console.log("InvertedColorScheme: " + nativeTheme.shouldUseInvertedColorScheme);
+
   const contextMenu = Menu.buildFromTemplate([
     { label: '終了', role: 'quit' }
   ]);
@@ -167,7 +162,7 @@ const displayTimer = (valMilliSeconds) => {
   // Windowsは「.ico」、macOSは「.png」形式
   let imgFileName = ('000' + multipleOfFive).slice(-3) + (process.platform === 'win32' ? '.ico' : '.png');
   // Windows、あるいはダークテーマの場合は基本「白色」のアイコンテーマを使う
-  if ( process.platform === 'win32' || isDarkTheme === true ) {
+  if ( isDarkTheme === true ) {
     imgFilePath = __dirname + '/images/tray-icon/white/' + imgFileName;
   }
   else {
